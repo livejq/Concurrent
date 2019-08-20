@@ -14,7 +14,7 @@ public class JoinDemo1 {
         List<Thread> threads = IntStream.range(1, 3).mapToObj(JoinDemo1::create).collect(Collectors.toList());
         threads.forEach(Thread::start);
         for (Thread thread : threads) {
-//            thread.join();
+            thread.join();
         }
         for (int i = 0; i < 5; i++) {
             System.out.println(Thread.currentThread().getName() + "#" + i);

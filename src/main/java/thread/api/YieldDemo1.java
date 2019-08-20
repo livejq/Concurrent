@@ -6,7 +6,6 @@ import java.util.stream.IntStream;
  * 提醒CPU调度器，“我”愿意放弃当前CPU资源，若CPU资源不紧张则一般会忽略这个提醒
  * yield只是个（hint），CPU调度器并不会每次都能满足yield的需要
  *
- *
  * @author livejq
  * @since 2019/8/14
  */
