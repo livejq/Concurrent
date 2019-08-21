@@ -57,7 +57,9 @@ public class HttpDownloader {
 		long startTime = System.currentTimeMillis();
 
 		resumable = supportResumeDownload();
-		if (!resumable || THREAD_NUM == 1|| fileSize < MIN_SIZE) multithreaded = false;
+		if (!resumable || THREAD_NUM == 1|| fileSize < MIN_SIZE) {
+		    multithreaded = false;
+        }
 		if (!multithreaded) {
 			new DownloadThread(0, 0, fileSize - 1).start();;
 		}
@@ -213,8 +215,12 @@ public class HttpDownloader {
 				con.setReadTimeout(TIME_OUT);
 				con.connect();
 				int partSize = con.getHeaderFieldInt("Content-Length", -1);
-				if (partSize != end - start + 1) return false;
-				if (out == null) out = new FileOutputStream(localFile.getAbsolutePath() + "." + id + ".tmp");
+				if (partSize != end - start + 1) {
+				    return false;
+                }
+				if (out == null) {
+				    out = new FileOutputStream(localFile.getAbsolutePath() + "." + id + ".tmp");
+                }
 				try (InputStream in = con.getInputStream()) {
 					byte[] buffer = new byte[1024];
 					int size;
@@ -225,8 +231,11 @@ public class HttpDownloader {
 						out.flush();
 					}
 					con.disconnect();
-					if (start <= end) return false;
-					else out.close();
+					if (start <= end) {
+					    return false;
+                    } else {
+					    out.close();
+                    }
 				}
 			} catch(SocketTimeoutException e) {
 				System.out.println("Part " + (id + 1) + " Reading timeout.");
