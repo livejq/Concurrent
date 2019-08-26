@@ -16,8 +16,8 @@ public class PriorityDemo1 extends Thread {
     @Override
     public void run() {
         for (int i = 0; i < 10; i++) {
-            System.out.println(Thread.currentThread().getName() + " : " + i);
-            System.out.println("优先级：" + Thread.currentThread().getPriority());
+            System.out.println(currentThread().getName() + " : " + i);
+            System.out.println("优先级：" + currentThread().getPriority());
         }
     }
 
