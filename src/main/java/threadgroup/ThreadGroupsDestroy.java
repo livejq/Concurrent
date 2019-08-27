@@ -1,6 +1,4 @@
-package thread.threadgroup;
-
-import java.util.concurrent.TimeUnit;
+package threadgroup;
 
 /**
  * @author livejq
