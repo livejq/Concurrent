@@ -1,4 +1,4 @@
-package threadgroup;
+package threadGroup;
 
 import java.util.concurrent.TimeUnit;
 

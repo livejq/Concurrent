@@ -35,8 +35,8 @@ public class PreventDuplicated {
         checkRunning();
         for(int i = 0; i < 20; i++) {
             try {
-                TimeUnit.SECONDS.sleep(1);
                 System.out.println("main 正在运行...");
+                TimeUnit.MINUTES.sleep(1);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }

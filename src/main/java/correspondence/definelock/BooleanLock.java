@@ -24,7 +24,8 @@ public class BooleanLock implements Lock {
             blockedThread.add(currentThread);
           }
           this.wait();
-          System.out.println("lock()....等待中....");
+          System.out.println(Thread.currentThread().getName() + "等待中....");
+          System.out.println("队列总数：" + getBlockedThread().size());
         } catch (InterruptedException e) {
           // 中断之后得移除等待队列里的此线程，避免内存泄露
           blockedThread.remove(tempThread);
@@ -54,7 +55,8 @@ public class BooleanLock implements Lock {
           }
           System.out.println(
               Thread.currentThread().getName() + " 等待中....还剩 " + remainingMillis + " 毫秒");
-          // 关键，注意先后顺序
+            System.out.println("队列总数：" + getBlockedThread().size());
+            // 关键，注意先后顺序
           this.wait(remainingMillis);
           remainingMillis = endMillis - System.currentTimeMillis();
         }

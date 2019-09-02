@@ -1,4 +1,4 @@
-package threadgroup;
+package threadGroup;
 
 import java.util.concurrent.TimeUnit;
 
@@ -25,6 +25,7 @@ public class EnumerateThreadGroups1 {
 
         TimeUnit.SECONDS.sleep(3);
         ThreadGroup mainGroup = Thread.currentThread().getThreadGroup();
+        // 返回当前线程组（main线程组）中的
         ThreadGroup[] list = new ThreadGroup[mainGroup.activeGroupCount()];
         System.out.println("list.length:" + list.length);
         for (ThreadGroup temp : list) {
@@ -35,6 +36,7 @@ public class EnumerateThreadGroups1 {
             }
         }
         mainGroup.list();
+        // 注意：不要漏掉！！！！！其中的所有Group和Thread都属于main主线程组中的====================
         int recurseSize = mainGroup.enumerate(list);
         System.out.println(recurseSize);
         recurseSize = mainGroup.enumerate(list, false);

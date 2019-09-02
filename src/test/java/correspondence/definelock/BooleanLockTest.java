@@ -21,12 +21,14 @@ public class BooleanLockTest {
                             }
                         },
                         "x1");
+        x1.setPriority(10);
         x1.start();
         try {
             TimeUnit.SECONDS.sleep(2);
+            System.out.println("x1 优先级：" + x1.getPriority());
         } catch (InterruptedException e) {
             e.printStackTrace();
-        }
+    }
         Thread t1 =
                 new Thread(
                         () -> {
